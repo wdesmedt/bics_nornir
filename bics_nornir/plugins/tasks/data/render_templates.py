@@ -13,7 +13,11 @@ def render_templates(
     task: Task, 
     src_path: str,
     dst_path: str,
+<<<<<<< HEAD
     dst_prefix: str = None,
+=======
+    dst_suffix: str = None,
+>>>>>>> c8cc41cb2cf4f1456b21912d4384ac96f96d87c6
     **kwargs
     ) -> Result:
     """
@@ -29,6 +33,7 @@ def render_templates(
         undefined=StrictUndefined
     )
     yml = YAML(typ="safe")
+<<<<<<< HEAD
     if dst_prefix:
         dst_path = Path(dst_path) / str(dst_prefix)
     
@@ -36,6 +41,11 @@ def render_templates(
 
     if not dst_path.exists():
         dst_path.mkdir(parents=True)
+=======
+    dst_path = Path(dst_path) / task.host.name
+    if not dst_path.exists():
+        dst_path.mkdir()
+>>>>>>> c8cc41cb2cf4f1456b21912d4384ac96f96d87c6
 
     for template in env.list_templates(extensions="j2"):
         t = env.get_template(template)
@@ -46,8 +56,15 @@ def render_templates(
             _ = yml.load(text)
         except ParserError as e:
             raise ValueError(f'Cannot parse rendered {template}: {e}')
+<<<<<<< HEAD
 
         filename = dst_path / str(template.split(".")[0] + ".yml")
+=======
+        if dst_suffix:
+            filename = dst_path / str(template.split(".")[0] + "_" + str(dst_suffix) + ".yml")
+        else:
+            filename = dst_path / str(template.split(".")[0] + ".yml")
+>>>>>>> c8cc41cb2cf4f1456b21912d4384ac96f96d87c6
 
         with open(filename, "w") as f:
             f.write(text)
