@@ -12,3 +12,4 @@ setup_env:
 .PHONY: tests
 tests:
 	-black --check $(PROJ_DIR)
+	pytest $(PROJ_DIR)
