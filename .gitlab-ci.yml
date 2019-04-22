@@ -5,12 +5,9 @@ stages:
   - test
   - deploy
 
-setup_environment:
-  stage: build
-  script:
-    - make setup_env
-
 tests:
+  before_script:
+    - make setup_env
   stage: test
   script: 
     - make tests
