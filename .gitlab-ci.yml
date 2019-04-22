@@ -1,0 +1,17 @@
+image: python:3.6
+
+stages:
+  - build
+  - test
+  - deploy
+
+setup_environment:
+  stage: build
+  script:
+    - make setup_env
+
+tests:
+  stage: test
+  script: 
+    - make tests
+

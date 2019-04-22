@@ -10,12 +10,8 @@ from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
 
 def render_templates(
-    task: Task, 
-    src_path: str,
-    dst_path: str,
-    dst_prefix: str = None,
-    **kwargs
-    ) -> Result:
+    task: Task, src_path: str, dst_path: str, dst_prefix: str = None, **kwargs
+) -> Result:
     """
     Loads intents from intent files
     
@@ -25,13 +21,15 @@ def render_templates(
 
     """
     env = Environment(
-        loader=FileSystemLoader(src_path), trim_blocks=True, lstrip_blocks=True,
-        undefined=StrictUndefined
+        loader=FileSystemLoader(src_path),
+        trim_blocks=True,
+        lstrip_blocks=True,
+        undefined=StrictUndefined,
     )
     yml = YAML(typ="safe")
     if dst_prefix:
         dst_path = Path(dst_path) / str(dst_prefix)
-    
+
     dst_path = Path(dst_path) / task.host.name
 
     if not dst_path.exists():
@@ -45,7 +43,7 @@ def render_templates(
         try:
             _ = yml.load(text)
         except ParserError as e:
-            raise ValueError(f'Cannot parse rendered {template}: {e}')
+            raise ValueError(f"Cannot parse rendered {template}: {e}")
 
         filename = dst_path / str(template.split(".")[0] + ".yml")
 
@@ -53,5 +51,3 @@ def render_templates(
             f.write(text)
 
     return Result(host=task.host, result={})
-
-

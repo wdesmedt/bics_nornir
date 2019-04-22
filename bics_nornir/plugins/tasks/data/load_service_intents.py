@@ -37,9 +37,9 @@ def load_service_intents(task: Task, directory: str) -> Result:
             if task.host.name in host_params:
                 data.update(host_params[task.host.name])
             if host_params:
-                del(data["host_params"])
+                del (data["host_params"])
             host_data.update({service_id: data})
     task.host["service_intent"] = host_data
     task.host["rsc_to_populate"] = resources_to_populate
-    
+
     return Result(host=task.host, result=host_data)

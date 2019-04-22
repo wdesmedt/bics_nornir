@@ -19,7 +19,7 @@ def get_config(
     path: str,
     exclude: List[str] = None,
     depth: int = 99,
-    **kwargs
+    **kwargs,
 ) -> Result:
     """
     Get configuration from specified datastore `source` on router
@@ -133,8 +133,10 @@ def nc_configure(
     else:
         diff = conn.compare_config()
         if len(diff) > 0:
-            raise Exception(f"Candidate datastore not clean! Use force=True to override\n\
-                {diff}")
+            raise Exception(
+                f"Candidate datastore not clean! Use force=True to override\n\
+                {diff}"
+            )
     config_data = deepcopy(configuration)
     meta_data = {}
     meta_keys = [k for k in config_data.keys() if k.startswith("_")]
