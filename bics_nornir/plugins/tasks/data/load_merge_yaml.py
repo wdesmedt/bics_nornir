@@ -45,7 +45,6 @@ def load_merge_yaml(task: Task, directory: str) -> Result:
     _merge(group_data, global_data)
     _merge(host_data, group_data)
 
-
     return Result(host=task.host, result=host_data)
 
 
