@@ -7,7 +7,8 @@ all: setup_env tests
 setup_env:
 	curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python && \
 		$$HOME/.poetry/bin/poetry config settings.virtualenvs.create false
-	$$HOME/.poetry/bin/poetry install	
+	$$HOME/.poetry/bin/poetry install
+	echo $$DOCKER_HOST
 	
 .PHONY: tests
 tests:
