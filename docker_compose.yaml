@@ -1,0 +1,20 @@
+---
+version 1.0
+
+services:
+    nornir:
+        image: nornir:latest
+        build:
+            context: .
+            args:
+                PYTHON: "3.7"
+        extra_hosts:
+            - "sr1.lab:172.31.255.101"
+            - "sr2.lab:172.31.255.102"
+            - "sr3.lab:172.31.255.103"
+            - "sr4.lab:172.31.255.104"
+        networks:
+            mgmt_net:
+                ipv4_address: 172.31.255.2
+
+    sr1
