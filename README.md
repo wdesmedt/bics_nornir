@@ -15,12 +15,14 @@ Nornir is a Python automation framework that provides support for concurrent exe
 
 ## Install using pip
 This is the recommended method if you're familiar with the plugins or when you want to run a Nornir _runbook_. 
+
 2. install `bics_nornir` using pip from the default public PyPI repository:
     `pip install bics-nornir`
     This will install bics_nornir and all its dependencies, including `nornir` and its depdendencies, in the current Python environment.
 
 ## Install using Git
 This is the recommended method if you want to familiarize yourself with the plugin functionality.
+
 2. install `nornir` with `pip install nornir` from a PyPI repo that has the Nornir package and its depdendencies (default: pypi.org)
 3. clone the bics_nornir Git repo into the current project dir: `git clone https://bcgit.bc/wdesmedt/bics_nornir.git`
 4. install `poetry` with `pip install poetry`
