@@ -6,8 +6,8 @@ stages:
   - deploy
 
 tests:
-  before_script:
-    - make setup_env
+#  before_script:
+#    - make setup_env
   stage: test
   script: 
     - make tests
