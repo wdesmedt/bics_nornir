@@ -1,0 +1,37 @@
+---
+global:
+  data:
+    domain: lab.local
+    asn: 123
+    snmp:
+      _action: replace
+      enable: true
+      port: 161
+      communities:
+        "comm1":
+          access_permissions: r
+          version: v2c
+        "comm2":
+          access_permissions: rw
+          version: v2c
+      trap_groups:
+        _action: merge
+        "trap_grp1":
+          address: 1.1.1.1
+          version: v2c
+          description: Trap destination for Netcool
+
+
+lab:
+  data:
+    asn: 1234
+
+nokia_sros:
+  username: nc
+  password: netconf
+  port: 830
+  platform: sros
+  data:
+    load_balancing_mode: l4_hasing
+
+

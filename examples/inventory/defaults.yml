@@ -1,0 +1,11 @@
+---
+data:
+  ntp:
+    servers:
+      "ntp1":
+        address: 1.2.3.4
+        port: 123
+      "ntp2":
+        address: 1.2.3.5
+        port: 123
+
